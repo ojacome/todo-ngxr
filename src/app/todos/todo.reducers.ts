@@ -3,7 +3,9 @@ import { TodoModel } from "./models/todo.model";
 import { crear } from "./todo.actions";
 
 
-export const estadoInicial: TodoModel[] = [];
+export const estadoInicial: TodoModel[] = [
+    new TodoModel('Salvar al mundo')
+];
 
 
 
