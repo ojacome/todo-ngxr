@@ -4,8 +4,8 @@ export class TodoModel {
     public completado:  boolean;
 
     constructor( texto: string ) {
-        this.texto = texto;
-        this.id = new Date().getTime();
+        this.texto      = texto;
+        this.id         = Math.random();
         this.completado = false;
     }
 }

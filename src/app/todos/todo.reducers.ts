@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { TodoModel } from "./models/todo.model";
-import { crear } from "./todo.actions";
+import { crear, toggle } from "./todo.actions";
 
 
 export const estadoInicial: TodoModel[] = [
@@ -15,6 +15,21 @@ export const estadoInicial: TodoModel[] = [
 const _todoReducer = createReducer(
     estadoInicial,
     on( crear, (state, {texto} ) => [...state, new TodoModel( texto )] ), // hay que realizarlo de esta manera ya que no es recomendable utilizar push, ni pop , etc
+    on( toggle, (state, {id} ) => {
+        
+        return state.map( todo => {
+
+            if( todo.id === id ){
+                return {
+                    ...todo,
+                    completado: !todo.completado
+                }
+            }
+            else {
+                return todo;
+            }
+        });
+    } ),
 );
 
 export function todoReducer(state, action) {
