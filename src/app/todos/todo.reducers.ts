@@ -1,13 +1,13 @@
 import { createReducer, on } from "@ngrx/store";
 import { TodoModel } from "./models/todo.model";
-import { borrar, crear, editar, toggle, toggleAll } from "./todo.actions";
+import { borrar, borrarCompletados, crear, editar, toggle, toggleAll } from "./todo.actions";
 
 
 export const estadoInicial: TodoModel[] = [
     new TodoModel('Salvar al mundo'),
     new TodoModel('Vencer a Thanos'),
     new TodoModel('Comprar el traje de Ironman'),
-    new TodoModel('Crear un lenguaje de progrmacion que lleve a SpaceX a la luna')
+    new TodoModel('Crear un lenguaje de programación que lleve a SpaceX a la Luna')
 ];
 
 
@@ -53,6 +53,7 @@ const _todoReducer = createReducer(
         });
     } ),
     on( borrar, (state, {id} ) => state.filter( todo => todo.id !== id ) ),
+    on( borrarCompletados, (state) => state.filter( todo => !todo.completado ) ),
 );
 
 export function todoReducer(state, action) {
