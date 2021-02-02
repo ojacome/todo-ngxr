@@ -11,3 +11,8 @@ export const toggle = createAction(
     '[Todo] Toggle Todo',
     props<{ id: number }>()
     );
+
+export const editar = createAction(
+    '[Todo] Editar Todo',
+    props<{ id: number, texto: string }>()
+    );
