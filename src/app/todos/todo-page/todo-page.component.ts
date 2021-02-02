@@ -25,7 +25,6 @@ export class TodoPageComponent implements OnInit {
 
   toggleAll() {
     this.completado = !this.completado;
-    console.info(this.completado);
     this.store.dispatch( toggleAll({ completado: this.completado }));
   }
 }
